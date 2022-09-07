@@ -28,7 +28,15 @@ public class RobotAnimationController : MonoBehaviour
         if (Input.GetButtonDown("Pistol"))
         {
             pistol = !pistol;
-            changeGun(1);
+
+            if (currentGun != 0)
+            {
+                changeGun(0);
+            }
+            else
+            {
+                changeGun(1);
+            }
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -41,13 +49,10 @@ public class RobotAnimationController : MonoBehaviour
             isShooting = false;
         }
 
-        if (!pistol)
+        if (Input.GetAxis("Horizontal") != 0 | Input.GetAxis("Vertical") != 0)
         {
-            currentGun = 0;
+            animator.SetBool("Running", true);
         }
-
-        animator.SetBool("Running", Input.GetAxisRaw("Vertical") != 0);
-        animator.SetBool("Running", Input.GetAxisRaw("Horizontal") != 0);
         animator.SetBool("Pistol", pistol);
         animator.SetBool("Shooting", isShooting);
     }
