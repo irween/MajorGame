@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8caf040e4c4dbc541b1b7a8304b8f1c5
+guid: 5ed61b14d60023942a5cb8b1a8f382ca
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -10,14 +10,26 @@ ModelImporter:
       74: -7785144576667427186
     second: Armature.002|Cylinder.022Action
   - first:
+      74: 1814416494363959726
+    second: PistolShoot1
+  - first:
+      74: 5138602965388526686
+    second: PistolIdle
+  - first:
+      74: -2093183247422748246
+    second: PistolDraw1
+  - first:
+      74: 2042312682146991451
+    second: PistolHolster
+  - first:
+      74: -6775884027671718737
+    second: Idle1
+  - first:
       74: 2409975013183413432
     second: PistolShoot
   - first:
       74: -4726991471507811930
     second: PistolDraw
-  - first:
-      74: 1491797009932265326
-    second: PistolHolster
   - first:
       74: -3100369314251171874
     second: Idle
@@ -51,11 +63,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: PistolIdle
+      name: PistolShoot
       takeName: Armature.002|Armature.002Action
       internalID: 0
       firstFrame: 71
-      lastFrame: 72
+      lastFrame: 82
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -80,11 +92,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PistolShoot
+      name: PistolIdle
       takeName: Armature.002|Armature.002Action
       internalID: 0
       firstFrame: 71
-      lastFrame: 82
+      lastFrame: 72
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
