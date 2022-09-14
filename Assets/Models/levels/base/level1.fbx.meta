@@ -3,17 +3,7 @@ guid: bb146923216c1d846af6a018d5257492
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hologram
-    second: {fileID: 2100000, guid: e7697943d118d6344a8b3c5e1de0a0bd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: -876546973899608171, guid: 5ed61b14d60023942a5cb8b1a8f382ca, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
