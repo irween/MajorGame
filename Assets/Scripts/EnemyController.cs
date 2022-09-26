@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody enemyRb;
     private GameObject player;
 
-    private bool foundPlayer
+    private bool foundPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +22,9 @@ public class EnemyController : MonoBehaviour
     {
         if (foundPlayer)
         {
-            enemyRb.AddForce((player.transform.position - transform.position).normalized * speed)
+            enemyRb.AddForce((player.transform.position - transform.position).normalized * speed);
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.)
-    }
 }
 
