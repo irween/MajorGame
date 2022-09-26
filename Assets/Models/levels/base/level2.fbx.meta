@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb146923216c1d846af6a018d5257492
+guid: c3c89763d7810fd4b917efcc0cca4221
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -9,70 +9,10 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Exit
     second: {fileID: 2100000, guid: ed97fb9cad1c4384a9a489efb1474c9a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: 6b2818885b19e54428d1345ba518ffe8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Girder
-    second: {fileID: 2100000, guid: 22765a8ed00fdd9428109f8d49f79080, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hologram
-    second: {fileID: 2100000, guid: 466788123ad8b9d4083a15b6ca84daa2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: 71b018440465e014397f896ccc24c1e8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: box
-    second: {fileID: 2100000, guid: 06fe9b9f2c41eeb49bfe5395515de654, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: door frame
-    second: {fileID: 2100000, guid: 37538064d5d286c45a2412ff2737d596, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: entrance
-    second: {fileID: 2100000, guid: 8dc54f4d6dc58824ca676bcb8501b059, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: glass
-    second: {fileID: 2100000, guid: c1c6f2eac7cdc7849bfb2eaa7af581a9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: glass emission
-    second: {fileID: 2100000, guid: 1abe9de7355dc7947b3a872d192d6fb0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: metal frame
-    second: {fileID: 2100000, guid: 78d83369dc33c3542bdbb543cb94307c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: table
-    second: {fileID: 2100000, guid: d6955711ebcff5548a5e9ea3dad37110, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: table face
-    second: {fileID: 2100000, guid: 9b091d71992e1c04ca564cd626c95a50, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4

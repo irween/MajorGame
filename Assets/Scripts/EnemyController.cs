@@ -25,6 +25,5 @@ public class EnemyController : MonoBehaviour
             enemyRb.AddForce((player.transform.position - transform.position).normalized * speed);
         }
     }
-
 }
 
