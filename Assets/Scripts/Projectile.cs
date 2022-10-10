@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     // public variables
     public float speed = 40f;
 
+    public int damage;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +21,12 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            other.gameObject.GetComponent<PlayerCombatController>().takeDamage(damage);
         }
     }
 }

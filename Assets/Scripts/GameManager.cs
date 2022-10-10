@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
         weaponUI.SetActive(false);
     }
 
+    public void KillPlayer()
+    {
+
+    }
+
     public void SetWeapon(string weapon)
     {
         if (weapon == "empty")

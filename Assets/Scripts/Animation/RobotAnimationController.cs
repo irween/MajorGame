@@ -103,15 +103,15 @@ public class RobotAnimationController : MonoBehaviour
             animator.SetBool("Running", false);
         }
 
-        animator.SetBool("Pistol", pistol);
-        animator.SetBool("Shooting", isShooting);
-        animator.SetBool("MachineGun", machineGun);
-        animator.SetBool("Shotgun", shotgun);
-        
         if (lookVerticalInput == 0 && lookHorizontalInput == 0)
         {
             isShooting = false;
         }
+
+        animator.SetBool("Pistol", pistol);
+        animator.SetBool("Shooting", isShooting);
+        animator.SetBool("MachineGun", machineGun);
+        animator.SetBool("Shotgun", shotgun);
     }
 
     public void changeGun(int gun)
