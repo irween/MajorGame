@@ -8,10 +8,10 @@ public class Spawner : MonoBehaviour
     public GameObject[] Enemies;
 
     // setting the spawning variables
-    public float spawnRangeX1 = 30;
-    public float spawnRangeX2 = 30;
-    public float spawnRangeZ1 = 30;
-    public float spawnRangeZ2 = 30;
+    public float spawnRangeX1;
+    public float spawnRangeX2;
+    public float spawnRangeZ1;
+    public float spawnRangeZ2;
 
 
     // making a public variable that can be "turned on" or "off" (making it true or false) to stop and start the spawning.

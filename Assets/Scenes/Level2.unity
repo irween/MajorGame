@@ -1403,6 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db2526c9f5fc614bab14ebc4a0e1118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   completeLevelUI: {fileID: 1150834873}
   weaponUI: {fileID: 632148256}
   weaponsListUI:
@@ -1765,6 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ammo: []
   maxHealth: 150
   resistance: 0
 --- !u!1 &791356235

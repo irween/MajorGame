@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    public float difficulty;
+
     public GameObject completeLevelUI;
     public GameObject weaponUI;
 
@@ -16,16 +20,21 @@ public class GameManager : MonoBehaviour
     // 2 = machine gun
     public List<GameObject> weaponsListUI;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        GameManager.Instance.difficulty = difficulty;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void CompleteLevel()
