@@ -1749,26 +1749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722120282}
   m_CullTransparentMesh: 1
---- !u!1 &785481500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 297437390470358712, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
-  m_PrefabInstance: {fileID: 297437391678048516}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &785481504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785481500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ammo: []
-  maxHealth: 150
-  resistance: 0
 --- !u!1 &791356235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,18 +2362,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 297437390470358712, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 297437390470358714, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 297437390470358715, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 297437390773671147, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
       propertyPath: playerTransform
       value: 
@@ -2450,8 +2418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperTower
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 297437390680421180, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
+    - target: {fileID: 4854548096645021647, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
 --- !u!1001 &6258857340076458233
 PrefabInstance:
@@ -2542,3 +2513,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   resistance: 0
+  damage: 10

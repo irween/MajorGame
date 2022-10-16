@@ -9,6 +9,8 @@ public class PlayerCombatController : MonoBehaviour
     public int currentHealth { get; private set; }
     public int resistance = 0;
 
+    public int damage;
+
     // Start is called before the first frame update
     void Start()
     {

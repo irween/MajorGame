@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
     {
         // moves the gameobject by a designated amount every frame
         transform.Translate(Vector3.down * Time.deltaTime * speed);
+        damage = FindObjectOfType<PlayerCombatController>().damage;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,8 +26,8 @@ public class Projectile : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
+            other.gameObject.GetComponent<EnemyCombatController>().takeDamage(damage);
             Destroy(gameObject);
-            other.gameObject.GetComponent<PlayerCombatController>().takeDamage(damage);
         }
     }
 }

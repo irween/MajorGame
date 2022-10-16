@@ -1064,8 +1064,7 @@ GameObject:
   - component: {fileID: 8663655754912425762}
   - component: {fileID: 8663655754912425764}
   - component: {fileID: 8663655754912425767}
-  - component: {fileID: 8663655754912425766}
-  - component: {fileID: 297437390680421180}
+  - component: {fileID: 342930606232396852}
   m_Layer: 0
   m_Name: EnemySniper
   m_TagString: Enemy
@@ -1162,19 +1161,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8663655754912425766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663655754912425761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd425ba90209c6d41bff7c92a7cd78be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &297437390680421180
+--- !u!114 &342930606232396852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1442,8 +1429,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 24183592300239449, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
+--- !u!1 &297437390470358712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 24183592300239449, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
+  m_PrefabInstance: {fileID: 321267824239934689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &785481504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297437390470358712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: []
+  maxHealth: 150
+  resistance: 0
+  ammoChanceMax: 0
 --- !u!4 &297437390470358713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
