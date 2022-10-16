@@ -11,8 +11,8 @@ public class EnemyCombatController : MonoBehaviour
     public int currentHealth { get; private set; }
     public int resistance = 0;
 
-    private int ammoIndex;
-    private int ammoChance;
+    public int ammoIndex;
+    public int ammoChance;
     public int ammoChanceMax;
 
     // Start is called before the first frame update
@@ -39,12 +39,7 @@ public class EnemyCombatController : MonoBehaviour
     private void Die()
     {
         ammoIndex =  Random.Range(0, ammo.Length);
-        ammoChance = Random.Range(1, ammoChanceMax);
-
-        if (ammoChance == 1)
-        {
-            Instantiate(ammo[ammoIndex], gameObject.transform);
-        }
+        Instantiate(ammo[ammoIndex], gameObject.transform);
 
         Destroy(gameObject);
         Debug.Log(transform.name + " died");
