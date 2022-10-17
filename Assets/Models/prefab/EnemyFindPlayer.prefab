@@ -223,8 +223,10 @@ MonoBehaviour:
   - {fileID: 6148412531597834149, guid: b138a2d4f82694c43b57d0e4aeec7dc1, type: 3}
   - {fileID: 3016958338297708629, guid: 0a249b45ee277f1418f9f633e52718df, type: 3}
   - {fileID: 5062584540365080796, guid: 7c27ce45a46f7c64ca3cf7b487da5d9a, type: 3}
-  maxHealth: 100
+  maxHealth: 20
   resistance: 0
+  ammoIndex: 0
+  ammoChance: 1
   ammoChanceMax: 1
 --- !u!1 &2181632783458337521
 GameObject:
