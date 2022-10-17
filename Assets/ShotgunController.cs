@@ -21,7 +21,7 @@ public class ShotgunController : MonoBehaviour
         {
             gameManager.GetComponent<AmmoManager>().shotgunAmmo--;
 
-            Instantiate(projectilePrefab, transform.position + offset, transform.rotation);
+            Instantiate(projectilePrefab, transform.position + offset, transform.rotation * Quaternion.Euler(0, 0, 90));
         }
     }
 }

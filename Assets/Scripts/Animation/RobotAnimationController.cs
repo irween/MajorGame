@@ -9,10 +9,14 @@ public class RobotAnimationController : MonoBehaviour
     public int currentGun;
     public GameObject[] guns;
 
-    public float lookHorizontalInput;
-    public float lookVerticalInput;
-    
-    public float timeToFireInterval;
+    private float lookHorizontalInput;
+    private float lookVerticalInput;
+
+    public float timeToFirePistol;
+    public float timeToFireMachinegun;
+    public float timeToFireShotgun;
+
+    private float timeToFireInterval;
 
     private float timeToFire;
 
@@ -39,12 +43,13 @@ public class RobotAnimationController : MonoBehaviour
         lookHorizontalInput = Input.GetAxis("LookHorizontal");
         lookVerticalInput = Input.GetAxis("LookVertical");
 
-        if (Input.GetButton("Pistol"))
+        if (Input.GetButtonDown("Pistol"))
         {
             pistol = true; 
             machineGun = false;
             shotgun = false;
             changeGun(1);
+            timeToFireInterval = timeToFirePistol;
 
             gameManager.GetComponent<GameManager>().SetWeapon("pistol");
         }
@@ -55,6 +60,7 @@ public class RobotAnimationController : MonoBehaviour
             pistol = false;
             shotgun = false;
             changeGun(2);
+            timeToFireInterval = timeToFireMachinegun;
 
             gameManager.GetComponent<GameManager>().SetWeapon("machinegun");
         }
@@ -65,7 +71,7 @@ public class RobotAnimationController : MonoBehaviour
             machineGun = false;
             pistol = false;
             changeGun(3);
-
+            timeToFireInterval = timeToFireShotgun;
             gameManager.GetComponent<GameManager>().SetWeapon("shotgun");
         }
         
@@ -79,18 +85,17 @@ public class RobotAnimationController : MonoBehaviour
             gameManager.GetComponent<GameManager>().SetWeapon("empty");
         }
 
-        timeToFire = timeToFire -= Time.deltaTime;
-
-        if (lookVerticalInput != 0 && timeToFire <= 0)
+        timeToFire -= Time.deltaTime;
+        timeToFire = Mathf.Clamp(timeToFire, 0, 5);
+        
+        if ((lookHorizontalInput != 0 && timeToFire == 0) | (lookVerticalInput != 0 && timeToFire == 0))
         {
             isShooting = true;
             timeToFire = timeToFireInterval;
         }
-        
-        if (lookHorizontalInput != 0 && timeToFire <= 0)
+        else
         {
-            isShooting = true;
-            timeToFire = timeToFireInterval;
+            isShooting = false;
         }
 
         if (Input.GetAxis("Horizontal") != 0 | Input.GetAxis("Vertical") != 0)
@@ -101,11 +106,6 @@ public class RobotAnimationController : MonoBehaviour
         else
         {
             animator.SetBool("Running", false);
-        }
-
-        if (lookVerticalInput == 0 && lookHorizontalInput == 0)
-        {
-            isShooting = false;
         }
 
         animator.SetBool("Pistol", pistol);
