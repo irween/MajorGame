@@ -16,7 +16,7 @@ public class RobotAnimationController : MonoBehaviour
 
     private float timeToFire;
 
-    private bool isShooting = false;
+    public bool isShooting = false;
     private bool pistol = false;
     private bool machineGun = false;
     private bool shotgun = false;
@@ -39,7 +39,7 @@ public class RobotAnimationController : MonoBehaviour
         lookHorizontalInput = Input.GetAxis("LookHorizontal");
         lookVerticalInput = Input.GetAxis("LookVertical");
 
-        if (Input.GetButtonDown("Pistol"))
+        if (Input.GetButton("Pistol"))
         {
             pistol = true; 
             machineGun = false;

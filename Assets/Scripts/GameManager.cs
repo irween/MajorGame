@@ -11,10 +11,6 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject weaponUI;
 
-    private bool pistol = false;
-    private bool machineGun = false;
-    private bool shotgun = false;
-
     // 0 = empty
     // 1 = pistol
     // 2 = machine gun

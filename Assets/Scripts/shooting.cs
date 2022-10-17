@@ -6,19 +6,6 @@ using UnityEngine;
 public class shooting : MonoBehaviour
 {
     public List<GameObject> weapons;
-    private List<Component> weaponsScript;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Shoot(int gun)
     {
@@ -26,7 +13,20 @@ public class shooting : MonoBehaviour
         {
             if (i == gun)
             {
-                weapons[i].GetComponent<GunController>().ShootGun();
+                if (weapons[i].transform.name.ToLower() == "pistol")
+                {
+                    weapons[i].GetComponent<PistolController>().ShootGun();
+                }
+
+                if (weapons[i].transform.name.ToLower() == "machinegun")
+                {
+                    weapons[i].GetComponent<MachinegunController>().ShootGun();
+                }
+
+                if (weapons[i].transform.name.ToLower() == "shotgun")
+                {
+                    weapons[i].GetComponent<ShotgunController>().ShootGun();
+                }
             }
         }
     }

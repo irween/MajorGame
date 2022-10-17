@@ -9,6 +9,9 @@ TagManager:
   - Wall
   - EnemyProjectile
   - GameManager
+  - Pistol
+  - MachineGun
+  - Shotgun
   layers:
   - Default
   - TransparentFX

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MachingunAmmo : MonoBehaviour
 {
-    public GameObject machinegun;
+    private GameManager gameManager;
     public int ammo;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            machinegun.GetComponent<GunController>().ammoAmount += ammo;
+            gameManager = FindObjectOfType<GameManager>();
+            gameManager.GetComponent<AmmoManager>().MachineGunAmmoUpdate(ammo);
+            Destroy(gameObject);
         }
     }
 }
