@@ -13,11 +13,10 @@ public class Spawner : MonoBehaviour
     public float spawnRangeZ1;
     public float spawnRangeZ2;
 
-    public float spawnQuantity;
-
     public int spawnChanceSniper;
 
     private int enemySniper;
+    private float spawnQuantity;
 
     // making a public variable that can be "turned on" or "off" (making it true or false) to stop and start the spawning.
     // this helps me troubleshoot the game
@@ -29,6 +28,8 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnQuantity = FindObjectOfType<GameManager>().spawnAmount;
+
         // the game starts by spawning an enemy
         Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
                 1, Random.Range(spawnRangeZ1, spawnRangeZ2));

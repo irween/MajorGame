@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject weaponUI;
 
+    public int spawnAmount;
+    public int levelSpawnChange;
+
     // 0 = empty
     // 1 = pistol
     // 2 = machine gun
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        spawnAmount += levelSpawnChange;
         Debug.Log("LEVEL COMPLETE");
         completeLevelUI.SetActive(true);
         weaponUI.SetActive(false);

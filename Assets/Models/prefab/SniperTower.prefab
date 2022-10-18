@@ -845,6 +845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1109947977206932210}
+  - component: {fileID: -8055172652111453404}
   m_Layer: 0
   m_Name: SniperTower
   m_TagString: Untagged
@@ -869,6 +870,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8055172652111453404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854548096645021647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo:
+  - {fileID: 6148412531597834149, guid: b138a2d4f82694c43b57d0e4aeec7dc1, type: 3}
+  - {fileID: 3016958338297708629, guid: 0a249b45ee277f1418f9f633e52718df, type: 3}
+  - {fileID: 5062584540365080796, guid: 7c27ce45a46f7c64ca3cf7b487da5d9a, type: 3}
+  maxHealth: 50
+  resistance: 0
+  offset: {x: 0, y: 1, z: 0}
+  ammoIndex: 0
 --- !u!1 &4912139829485366192
 GameObject:
   m_ObjectHideFlags: 0

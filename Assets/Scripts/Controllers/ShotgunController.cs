@@ -8,6 +8,12 @@ public class ShotgunController : MonoBehaviour
 
     public Vector3 offset = new Vector3(0, 0, 0);
 
+    public int shotgunAmount;
+    public int angleStart;
+    private int angleModifier;
+    private int angle;
+    private Quaternion shotgunAngle;
+
     public int ammoAmount;
 
     private GameManager gameManager;
@@ -19,9 +25,15 @@ public class ShotgunController : MonoBehaviour
 
         if (ammoAmount > 0)
         {
-            gameManager.GetComponent<AmmoManager>().shotgunAmmo--;
-
-            Instantiate(projectilePrefab, transform.position + offset, transform.rotation * Quaternion.Euler(0, 0, 90));
+            angle = angleStart;
+            angleModifier = -angleStart / 2;
+            for (int i = 0; i < shotgunAmount; i++)
+            {
+                gameManager.GetComponent<AmmoManager>().shotgunAmmo--;
+                angle += angleModifier;
+                shotgunAngle = transform.rotation * Quaternion.AngleAxis(angle, Vector3.forward);
+                Instantiate(projectilePrefab, transform.position + offset, shotgunAngle * Quaternion.Euler(0, 0, 90));
+            }
         }
     }
 }
