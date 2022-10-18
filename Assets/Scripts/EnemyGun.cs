@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGun : MonoBehaviour
 {
-    public Transform playerTransform;
+    Transform playerTransform;
 
     public float lookAttackRadius = 25f;
 
@@ -18,7 +18,7 @@ public class EnemyGun : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.Find("player").GetComponent<Transform>();
+        playerTransform = PlayerManager.instance.player.transform;
     }
 
     // Update is called once per frame

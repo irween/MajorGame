@@ -15,6 +15,9 @@ public class Spawner : MonoBehaviour
 
     public float spawnQuantity;
 
+    public int spawnChanceSniper;
+
+    private int enemySniper;
 
     // making a public variable that can be "turned on" or "off" (making it true or false) to stop and start the spawning.
     // this helps me troubleshoot the game
@@ -26,7 +29,11 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // the game starts by spawning an enemy and a powerup
+        // the game starts by spawning an enemy
+        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
+                1, Random.Range(spawnRangeZ1, spawnRangeZ2));
+
+        Instantiate(Enemies[1], spawnPos, Enemies[enemyIndex].transform.rotation);
         SpawnRandomEnemy();
     }
 
@@ -37,17 +44,21 @@ public class Spawner : MonoBehaviour
 
     public void SpawnRandomEnemy()
     {
-        for (int i = 0; i < spawnQuantity; i++)
+        for (int i = 0; i < spawnQuantity - 1; i++)
         {
-            // getting a random index of the powerup list
-            enemyIndex = Random.Range(0, Enemies.Length);
+            enemySniper = Random.Range(0, spawnChanceSniper);
 
-            // getting a random spawn location in the specefied range
             Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
                 1, Random.Range(spawnRangeZ1, spawnRangeZ2));
 
-            // spawning the enemy
-            Instantiate(Enemies[enemyIndex], spawnPos, Enemies[enemyIndex].transform.rotation);
+            if (enemySniper == 1)
+            {
+                Instantiate(Enemies[1], spawnPos, Enemies[enemyIndex].transform.rotation);
+            }
+            else
+            {
+                Instantiate(Enemies[0], spawnPos, Enemies[enemyIndex].transform.rotation);
+            }
         }
     }
 }

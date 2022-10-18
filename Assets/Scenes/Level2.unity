@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1815,11 +1815,12 @@ MonoBehaviour:
   Enemies:
   - {fileID: 1808233829800073801, guid: 920216719b51f85429e6d207e4caf736, type: 3}
   - {fileID: 4854548096645021647, guid: f8edb08e2005bd24b88d446756f1b960, type: 3}
-  spawnRangeX1: -60
-  spawnRangeX2: 60
-  spawnRangeZ1: -85
-  spawnRangeZ2: 25
+  spawnRangeX1: -55
+  spawnRangeX2: 55
+  spawnRangeZ1: -80
+  spawnRangeZ2: 20
   spawnQuantity: 10
+  spawnChanceSniper: 5
   spawning: 1
 --- !u!1 &1150834873
 GameObject:
