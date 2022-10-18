@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
     public float spawnRangeZ1;
     public float spawnRangeZ2;
 
+    public float spawnQuantity;
+
 
     // making a public variable that can be "turned on" or "off" (making it true or false) to stop and start the spawning.
     // this helps me troubleshoot the game
@@ -35,15 +37,17 @@ public class Spawner : MonoBehaviour
 
     public void SpawnRandomEnemy()
     {
-        // getting a random index of the powerup list
-        enemyIndex = Random.Range(0, Enemies.Length);
+        for (int i = 0; i < spawnQuantity; i++)
+        {
+            // getting a random index of the powerup list
+            enemyIndex = Random.Range(0, Enemies.Length);
 
-        // getting a random spawn location in the specefied range
-        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
-            1, Random.Range(spawnRangeZ1, spawnRangeZ2));
+            // getting a random spawn location in the specefied range
+            Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
+                1, Random.Range(spawnRangeZ1, spawnRangeZ2));
 
-        // spawning the enemy
-        Instantiate(Enemies[enemyIndex], spawnPos, Enemies[enemyIndex].transform.rotation);
-
+            // spawning the enemy
+            Instantiate(Enemies[enemyIndex], spawnPos, Enemies[enemyIndex].transform.rotation);
+        }
     }
 }

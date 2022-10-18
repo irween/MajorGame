@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8663655754912425761}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.40553, y: -2.677228, z: 1.6872063}
+  m_LocalPosition: {x: 0, y: 10.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1387,15 +1387,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.300909
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.717228
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0172043
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1455,7 +1455,8 @@ MonoBehaviour:
   ammo: []
   maxHealth: 150
   resistance: 0
-  ammoChanceMax: 0
+  offset: {x: 0, y: 1, z: 0}
+  ammoIndex: 0
 --- !u!4 &297437390470358713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}

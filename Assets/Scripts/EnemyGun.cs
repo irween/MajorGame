@@ -16,10 +16,9 @@ public class EnemyGun : MonoBehaviour
 
     private float timeToFire;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        playerTransform = GameObject.Find("player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
