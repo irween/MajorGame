@@ -53,7 +53,7 @@ public class RobotAnimationController : MonoBehaviour
             changeGun(1);
             timeToFireInterval = timeToFirePistol;
 
-            gameManager.GetComponent<GameManager>().SetWeapon("pistol");
+            gameManager.GetComponent<GameManager>().SetWeapon("Pistol");
         }
         
         if (Input.GetButtonDown("MachineGun"))
@@ -64,7 +64,7 @@ public class RobotAnimationController : MonoBehaviour
             changeGun(2);
             timeToFireInterval = timeToFireMachinegun;
 
-            gameManager.GetComponent<GameManager>().SetWeapon("machinegun");
+            gameManager.GetComponent<GameManager>().SetWeapon("MachineGun");
         }
         
         if (Input.GetButtonDown("Shotgun"))
@@ -74,7 +74,7 @@ public class RobotAnimationController : MonoBehaviour
             pistol = false;
             changeGun(3);
             timeToFireInterval = timeToFireShotgun;
-            gameManager.GetComponent<GameManager>().SetWeapon("shotgun");
+            gameManager.GetComponent<GameManager>().SetWeapon("Shotgun");
         }
         
         if (Input.GetButtonDown("Empty"))
@@ -84,7 +84,7 @@ public class RobotAnimationController : MonoBehaviour
             shotgun = false;
             changeGun(0);
 
-            gameManager.GetComponent<GameManager>().SetWeapon("empty");
+            gameManager.GetComponent<GameManager>().SetWeapon("EmptySlot");
         }
 
         timeToFire -= Time.deltaTime;

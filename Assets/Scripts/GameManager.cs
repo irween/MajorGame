@@ -26,17 +26,10 @@ public class GameManager : MonoBehaviour
     // 3 = shotgun
     public List<GameObject> weaponsListUI;
 
-    private List<GameObject> weaponList;
-
-    void Start()
-    {
-        GameManager.Instance.difficulty = difficulty;
-
-        for (int i = 0; i < weaponsListUI.Count; i++)
-        {
-            weaponList.AddRange<weaponsListUI[i]>;
-        }
-    }
+    public string emptyName;
+    public string pistolName;
+    public string machineGunName;
+    public string shotgunName;
 
     private void Awake()
     {
@@ -48,6 +41,22 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        GameManager.Instance.difficulty = difficulty;
+
+        weaponsListUI.Add(GameObject.Find(emptyName));
+        weaponsListUI.Add(GameObject.Find(pistolName));
+        weaponsListUI.Add(GameObject.Find(machineGunName));
+        weaponsListUI.Add(GameObject.Find(shotgunName));
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < weaponsListUI.Count; i++)
+        {
+            Debug.Log(weaponsListUI[i].name);
+            weaponsListUI[i].SetActive(false);
+        }
     }
 
     public void CompleteLevel()
@@ -65,32 +74,16 @@ public class GameManager : MonoBehaviour
 
     public void SetWeapon(string weapon)
     {
-        if (weapon == "empty")
+        for (int i = 0; i < weaponsListUI.Count; i++)
         {
-            weaponsListUI[1].SetActive(false);
-            weaponsListUI[3].SetActive(false);
-            weaponsListUI[2].SetActive(false);
-        }
-
-        if (weapon == "pistol")
-        {
-            weaponsListUI[1].SetActive(true);
-            weaponsListUI[2].SetActive(false);
-            weaponsListUI[3].SetActive(false);
-        }
-
-        if (weapon == "machinegun")
-        {
-            weaponsListUI[2].SetActive(true);
-            weaponsListUI[1].SetActive(false);
-            weaponsListUI[3].SetActive(false);
-        }
-
-        if (weapon == "shotgun")
-        {
-            weaponsListUI[3].SetActive(true);
-            weaponsListUI[1].SetActive(false);
-            weaponsListUI[2].SetActive(false);
+            if (weaponsListUI[i].name == weapon)
+            {
+                weaponsListUI[i].SetActive(true);
+            }
+            else
+            {
+                weaponsListUI[i].SetActive(false);
+            }
         }
     }
 }
