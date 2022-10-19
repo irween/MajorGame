@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth { get; private set; }
-    public int resistance;
-    public int damage;
+    public float maxHealth = 100;
+    public float currentHealth { get; private set; }
+    public float resistance;
+    public float damage;
 
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +22,11 @@ public class PlayerCombatController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         damage *= 1 + (resistance/100);
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
-
+        damage = Mathf.RoundToInt(damage);
         currentHealth -= damage;
 
         Debug.Log(transform.name + " took " + damage + " damage");

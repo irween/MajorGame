@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour
     public int spawnAmount;
     public int levelSpawnChange;
 
-    public int basePlayerResistance;
-    public int basePlayerHealth;
-    public int basePlayerDamage;
+    public float basePlayerResistance;
+    public float basePlayerHealth;
+    public float basePlayerDamage;
     
     public float modifierPlayerResistance;
     public float modifierPlayerHealth;
@@ -55,27 +55,32 @@ public class GameManager : MonoBehaviour
 
     public void KillPlayer()
     {
-
+        Debug.Log("tetst");
     }
 
-    public void IncreaseStat(string stat)
+    public void IncreaseStat(int stat)
     {
-        if (stat == "resistance")
+        Debug.Log("Increasing " + stat);
+
+        if (stat == 1)
         {
             // increase resistance
             basePlayerResistance *= modifierPlayerResistance;
+            basePlayerResistance = Mathf.RoundToInt(basePlayerResistance);
         }
         
-        if (stat == "damage")
+        if (stat == 2)
         {
-            // increase resistance
+            // increase damage
             basePlayerDamage *= modifierPlayerDamage;
+            basePlayerDamage = Mathf.RoundToInt(basePlayerDamage);
         }
         
-        if (stat == "health")
+        if (stat == 3)
         {
-            // increase resistance
+            // increase health
             basePlayerHealth*= modifierPlayerHealth;
+            basePlayerHealth = Mathf.RoundToInt(basePlayerHealth);
         }
     }
 

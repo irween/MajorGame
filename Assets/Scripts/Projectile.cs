@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     // public variables
     public float speed = 40f;
 
-    public int damage;
+    public float damage;
 
     // Update is called once per frame
     void Update()

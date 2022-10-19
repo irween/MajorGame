@@ -8,7 +8,7 @@ public class EnemyCombatController : MonoBehaviour
     public GameObject[] ammo;
 
     public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    public float currentHealth { get; private set; }
     public int resistance = 0;
 
     public Vector3 offset = new Vector3(0, 1, 0);
@@ -21,10 +21,10 @@ public class EnemyCombatController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         damage -= resistance;
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        damage = Mathf.Clamp(damage, 0, float.MaxValue);
 
         currentHealth -= damage;
 
