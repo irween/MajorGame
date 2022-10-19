@@ -846,9 +846,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1109947977206932210}
   - component: {fileID: -8055172652111453404}
+  - component: {fileID: 4547180187835538166}
+  - component: {fileID: 6418821139396673029}
   m_Layer: 0
   m_Name: SniperTower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -890,6 +892,32 @@ MonoBehaviour:
   resistance: 0
   offset: {x: 0, y: 1, z: 0}
   ammoIndex: 0
+--- !u!65 &4547180187835538166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854548096645021647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.17, y: 5, z: 11.2}
+  m_Center: {x: -0.3, y: 2.5, z: 2.13}
+--- !u!65 &6418821139396673029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854548096645021647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.8, y: 11, z: 7.5}
+  m_Center: {x: 0, y: 5.5, z: -0.4}
 --- !u!1 &4912139829485366192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,30 +1457,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 24183592300239450, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
+    - {fileID: 24183592300239451, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
---- !u!1 &297437390470358712 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 24183592300239449, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}
-  m_PrefabInstance: {fileID: 321267824239934689}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &785481504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297437390470358712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammo: []
-  maxHealth: 150
-  resistance: 0
-  offset: {x: 0, y: 1, z: 0}
-  ammoIndex: 0
 --- !u!4 &297437390470358713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 24183592300239448, guid: 6a12f56284d79524faf887f2ea220d64, type: 3}

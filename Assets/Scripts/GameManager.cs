@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public float modifierPlayerResistance;
     public float modifierPlayerHealth;
     public float modifierPlayerDamage;
+
+    private Scene currentScene;
 
     // 0 = empty
     // 1 = pistol
@@ -79,9 +82,12 @@ public class GameManager : MonoBehaviour
         if (stat == 3)
         {
             // increase health
-            basePlayerHealth*= modifierPlayerHealth;
+            basePlayerHealth *= modifierPlayerHealth;
             basePlayerHealth = Mathf.RoundToInt(basePlayerHealth);
         }
+
+        currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void SetWeapon(string weapon)

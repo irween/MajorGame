@@ -9,15 +9,16 @@ public class PlayerCombatController : MonoBehaviour
     public float maxHealth = 100;
     public float currentHealth { get; private set; }
     public float resistance;
-    public float damage;
+    public float playerDamage;
 
-    public GameManager gameManager;
+    private GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         maxHealth = gameManager.GetComponent<GameManager>().basePlayerHealth;
-        damage = gameManager.GetComponent<GameManager>().basePlayerDamage;
+        playerDamage = gameManager.GetComponent<GameManager>().basePlayerDamage;
         resistance = gameManager.GetComponent<GameManager>().basePlayerResistance;
         currentHealth = maxHealth;
     }
