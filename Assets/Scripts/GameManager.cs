@@ -14,9 +14,18 @@ public class GameManager : MonoBehaviour
     public int spawnAmount;
     public int levelSpawnChange;
 
+    public int basePlayerResistance;
+    public int basePlayerHealth;
+    public int basePlayerDamage;
+    
+    public float modifierPlayerResistance;
+    public float modifierPlayerHealth;
+    public float modifierPlayerDamage;
+
     // 0 = empty
     // 1 = pistol
     // 2 = machine gun
+    // 3 = shotgun
     public List<GameObject> weaponsListUI;
 
     void Start()
@@ -47,6 +56,27 @@ public class GameManager : MonoBehaviour
     public void KillPlayer()
     {
 
+    }
+
+    public void IncreaseStat(string stat)
+    {
+        if (stat == "resistance")
+        {
+            // increase resistance
+            basePlayerResistance *= modifierPlayerResistance;
+        }
+        
+        if (stat == "damage")
+        {
+            // increase resistance
+            basePlayerDamage *= modifierPlayerDamage;
+        }
+        
+        if (stat == "health")
+        {
+            // increase resistance
+            basePlayerHealth*= modifierPlayerHealth;
+        }
     }
 
     public void SetWeapon(string weapon)
