@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,12 +19,6 @@ public class GameManager : MonoBehaviour
     public float basePlayerResistance;
     public float basePlayerHealth;
     public float basePlayerDamage;
-    
-    public float modifierPlayerResistance;
-    public float modifierPlayerHealth;
-    public float modifierPlayerDamage;
-
-    private Scene currentScene;
 
     // 0 = empty
     // 1 = pistol
@@ -31,9 +26,16 @@ public class GameManager : MonoBehaviour
     // 3 = shotgun
     public List<GameObject> weaponsListUI;
 
+    private List<GameObject> weaponList;
+
     void Start()
     {
         GameManager.Instance.difficulty = difficulty;
+
+        for (int i = 0; i < weaponsListUI.Count; i++)
+        {
+            weaponList.AddRange<weaponsListUI[i]>;
+        }
     }
 
     private void Awake()
@@ -58,36 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("tetst");
-    }
-
-    public void IncreaseStat(int stat)
-    {
-        Debug.Log("Increasing " + stat);
-
-        if (stat == 1)
-        {
-            // increase resistance
-            basePlayerResistance *= modifierPlayerResistance;
-            basePlayerResistance = Mathf.RoundToInt(basePlayerResistance);
-        }
         
-        if (stat == 2)
-        {
-            // increase damage
-            basePlayerDamage *= modifierPlayerDamage;
-            basePlayerDamage = Mathf.RoundToInt(basePlayerDamage);
-        }
-        
-        if (stat == 3)
-        {
-            // increase health
-            basePlayerHealth *= modifierPlayerHealth;
-            basePlayerHealth = Mathf.RoundToInt(basePlayerHealth);
-        }
-
-        currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
     }
 
     public void SetWeapon(string weapon)

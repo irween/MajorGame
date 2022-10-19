@@ -25,10 +25,12 @@ public class RobotAnimationController : MonoBehaviour
     private bool machineGun = false;
     private bool shotgun = false;
 
-    public GameManager gameManager;
+    private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
+
         animator = GetComponent<Animator>();
 
         for (int i = 0; i < guns.Length; i++)
