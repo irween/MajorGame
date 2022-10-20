@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
         {
             healthBar = FindObjectOfType<HealthBar>();
             gameManager = FindObjectOfType<GameManager>();
-            gameManager.currentHealth += healthToAdd;
+            gameManager.AddToHealth(healthToAdd);
             healthBar.SetHealth(gameManager.currentHealth);
             Destroy(gameObject);
         }

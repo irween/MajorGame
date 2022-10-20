@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class EnemyCombatController : MonoBehaviour
     public float currentHealth { get; private set; }
     public float resistance = 0;
     public float damage;
+
+    private bool dead = false;
 
     private int scoreModifier;
 
@@ -46,19 +49,19 @@ public class EnemyCombatController : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
-
-        Debug.Log(transform.name + " took " + damage + " damage");
-
         if (currentHealth <= 0)
         {
             gameManager.GetComponent<GameManager>().score += scoreModifier;
             scoreText.GetComponent<ScoreManager>().UpdateScore();
-            Die();
+            if (!dead)
+            {
+                Die();
+            }
         }
     }
-
     private void Die()
     {
+        dead = true;
         Instantiate(drops[enemyDropIndex], transform.position + offset, drops[enemyDropIndex].transform.rotation);
         Destroy(gameObject);
     }

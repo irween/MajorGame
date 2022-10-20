@@ -26,7 +26,7 @@ public class StatManager : MonoBehaviour
         if (stat == 1)
         {
             // increase resistance
-            gameManager.GetComponent<GameManager>().basePlayerResistance *= modifierPlayerResistance;
+            gameManager.GetComponent<GameManager>().basePlayerResistance += modifierPlayerResistance;
         }
 
         if (stat == 2)
@@ -38,10 +38,17 @@ public class StatManager : MonoBehaviour
         if (stat == 3)
         {
             // increase health
-            gameManager.GetComponent<GameManager>().basePlayerHealth *= modifierPlayerHealth;
+            gameManager.GetComponent<GameManager>().basePlayerHealth += modifierPlayerHealth;
         }
 
-        currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        if (gameManager.GetComponent<GameManager>().currentWave == gameManager.GetComponent<GameManager>().bossWave)
+        {
+            SceneManager.LoadScene("BossLevel");
+        }
+        else
+        {
+            currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
 }

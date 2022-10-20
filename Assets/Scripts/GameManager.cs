@@ -13,10 +13,7 @@ public class GameManager : MonoBehaviour
 
     public float difficulty;
 
-    public GameObject completeLevelUI;
-    public GameObject weaponUI;
-    
-    public GameObject gameOverUI;
+    private UIManager uiManager;
 
     public int baseSpawnAmount;
     public int levelSpawnAmountChange;
@@ -36,8 +33,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gameOverUI = GameObject.Find("GameOver");
-        gameOverUI.SetActive(false);
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -77,11 +72,9 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        completeLevelUI = GameObject.FindGameObjectWithTag("LevelComplete");
-        weaponUI = GameObject.FindGameObjectWithTag("WeaponUI");
-        Debug.Log("LEVEL COMPLETE");
-        completeLevelUI.SetActive(true);
-        weaponUI.SetActive(false);
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.CompleteLevel();
+
         currentWave += 1;
         if (currentWave == bossWave)
         {
@@ -95,9 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void KillPlayer()
     {
-        gameOverUI = GameObject.Find("GameOver");
-        weaponUI = GameObject.Find("WeaponUI");
-        gameOverUI.SetActive(true);
-        weaponUI.SetActive(false);
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.KillPlayer();
     }
 }

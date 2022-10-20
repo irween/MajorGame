@@ -15,6 +15,9 @@ TagManager:
   - Score
   - ScoreText
   - Floor
+  - WeaponUI
+  - LevelComplete
+  - GameOver
   layers:
   - Default
   - TransparentFX
