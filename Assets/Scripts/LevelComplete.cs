@@ -3,8 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
+    private GameObject gameManager;
+
+    public int maxWave;
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
     public void LoadNextLevel()
     {
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        if (gameManager.GetComponent<GameManager>().currentWave == maxWave)
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        }
     }
 }

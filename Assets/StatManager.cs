@@ -7,10 +7,6 @@ public class StatManager : MonoBehaviour
 {
     private GameObject gameManager;
 
-    public float basePlayerResistance;
-    public float basePlayerHealth;
-    public float basePlayerDamage;
-
     public float modifierPlayerResistance;
     public float modifierPlayerHealth;
     public float modifierPlayerDamage;
@@ -22,6 +18,7 @@ public class StatManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
     }
+
     public void IncreaseStat(int stat)
     {
         Debug.Log("Increasing " + stat);
@@ -29,25 +26,19 @@ public class StatManager : MonoBehaviour
         if (stat == 1)
         {
             // increase resistance
-            basePlayerResistance *= modifierPlayerResistance;
-            basePlayerResistance = Mathf.RoundToInt(basePlayerResistance);
-            gameManager.GetComponent<GameManager>().basePlayerResistance = basePlayerResistance;
+            gameManager.GetComponent<GameManager>().basePlayerResistance *= modifierPlayerResistance;
         }
 
         if (stat == 2)
         {
             // increase damage
-            basePlayerDamage *= modifierPlayerDamage;
-            basePlayerDamage = Mathf.RoundToInt(basePlayerDamage);
-            gameManager.GetComponent<GameManager>().basePlayerDamage = basePlayerDamage;
+            gameManager.GetComponent<GameManager>().basePlayerDamage *= modifierPlayerDamage;
         }
 
         if (stat == 3)
         {
             // increase health
-            basePlayerHealth *= modifierPlayerHealth;
-            basePlayerHealth = Mathf.RoundToInt(basePlayerHealth);
-            gameManager.GetComponent<GameManager>().basePlayerHealth = basePlayerHealth;
+            gameManager.GetComponent<GameManager>().basePlayerHealth *= modifierPlayerHealth;
         }
 
         currentScene = SceneManager.GetActiveScene();

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2536,7 +2536,12 @@ MonoBehaviour:
   difficulty: 0
   completeLevelUI: {fileID: 0}
   weaponUI: {fileID: 0}
-  weaponsListUI: []
+  spawnAmount: 5
+  levelSpawnChange: 5
+  basePlayerResistance: 10
+  basePlayerHealth: 100
+  basePlayerDamage: 10
+  currentWave: 0
 --- !u!1 &1977835786
 GameObject:
   m_ObjectHideFlags: 0

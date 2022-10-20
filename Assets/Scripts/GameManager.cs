@@ -7,11 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public int score;
+    public int scoreModifier;
 
     public float difficulty;
 
     public GameObject completeLevelUI;
     public GameObject weaponUI;
+    
+    public GameObject gameOverUI;
 
     public int spawnAmount;
     public int levelSpawnChange;
@@ -20,16 +24,7 @@ public class GameManager : MonoBehaviour
     public float basePlayerHealth;
     public float basePlayerDamage;
 
-    // 0 = empty
-    // 1 = pistol
-    // 2 = machine gun
-    // 3 = shotgun
-    public List<GameObject> weaponsListUI;
-
-    public string emptyName;
-    public string pistolName;
-    public string machineGunName;
-    public string shotgunName;
+    public int currentWave;
 
     private void Awake()
     {
@@ -44,18 +39,11 @@ public class GameManager : MonoBehaviour
 
         GameManager.Instance.difficulty = difficulty;
 
-        weaponsListUI.Add(GameObject.Find(emptyName));
-        weaponsListUI.Add(GameObject.Find(pistolName));
-        weaponsListUI.Add(GameObject.Find(machineGunName));
-        weaponsListUI.Add(GameObject.Find(shotgunName));
-    }
-
-    void Start()
-    {
-        for (int i = 0; i < weaponsListUI.Count; i++)
+        if (difficulty == 0)
         {
-            Debug.Log(weaponsListUI[i].name);
-            weaponsListUI[i].SetActive(false);
+            basePlayerHealth *= 1.5f;
+            basePlayerDamage *= 1.5f;
+            basePlayerResistance *= 1.5f;
         }
     }
 
@@ -65,25 +53,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("LEVEL COMPLETE");
         completeLevelUI.SetActive(true);
         weaponUI.SetActive(false);
+
+        currentWave += 1;
     }
 
     public void KillPlayer()
     {
-        
-    }
-
-    public void SetWeapon(string weapon)
-    {
-        for (int i = 0; i < weaponsListUI.Count; i++)
-        {
-            if (weaponsListUI[i].name == weapon)
-            {
-                weaponsListUI[i].SetActive(true);
-            }
-            else
-            {
-                weaponsListUI[i].SetActive(false);
-            }
-        }
+        gameOverUI.SetActive(true);
+        weaponUI.SetActive(false);
     }
 }

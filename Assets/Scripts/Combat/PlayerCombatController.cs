@@ -11,6 +11,8 @@ public class PlayerCombatController : MonoBehaviour
     public float resistance;
     public float playerDamage;
 
+    public HealthBar healthBar;
+
     private GameObject gameManager;
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class PlayerCombatController : MonoBehaviour
         playerDamage = gameManager.GetComponent<GameManager>().basePlayerDamage;
         resistance = gameManager.GetComponent<GameManager>().basePlayerResistance;
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void takeDamage(float damage)
@@ -29,6 +32,7 @@ public class PlayerCombatController : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
         damage = Mathf.RoundToInt(damage);
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
 
         Debug.Log(transform.name + " took " + damage + " damage");
 
@@ -43,5 +47,6 @@ public class PlayerCombatController : MonoBehaviour
         // death goes here
         // will be overwritten
         Debug.Log(transform.name + " died");
+        gameManager.GetComponent<GameManager>().KillPlayer();
     }
 }

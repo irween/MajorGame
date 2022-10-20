@@ -25,13 +25,15 @@ public class RobotAnimationController : MonoBehaviour
     private bool machineGun = false;
     private bool shotgun = false;
 
-    private GameObject gameManager;
+    private GameObject weaponManager;
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        weaponManager = GameObject.Find("WeaponsUI");
 
         animator = GetComponent<Animator>();
+
+        weaponManager.GetComponent<WeaponUI>().SetWeapon("EmptySlot");
 
         for (int i = 0; i < guns.Length; i++)
         {
@@ -53,7 +55,7 @@ public class RobotAnimationController : MonoBehaviour
             changeGun(1);
             timeToFireInterval = timeToFirePistol;
 
-            gameManager.GetComponent<GameManager>().SetWeapon("Pistol");
+            weaponManager.GetComponent<WeaponUI>().SetWeapon("Pistol");
         }
         
         if (Input.GetButtonDown("MachineGun"))
@@ -64,7 +66,7 @@ public class RobotAnimationController : MonoBehaviour
             changeGun(2);
             timeToFireInterval = timeToFireMachinegun;
 
-            gameManager.GetComponent<GameManager>().SetWeapon("MachineGun");
+            weaponManager.GetComponent<WeaponUI>().SetWeapon("MachineGun");
         }
         
         if (Input.GetButtonDown("Shotgun"))
@@ -74,7 +76,7 @@ public class RobotAnimationController : MonoBehaviour
             pistol = false;
             changeGun(3);
             timeToFireInterval = timeToFireShotgun;
-            gameManager.GetComponent<GameManager>().SetWeapon("Shotgun");
+            weaponManager.GetComponent<WeaponUI>().SetWeapon("Shotgun");
         }
         
         if (Input.GetButtonDown("Empty"))
@@ -84,7 +86,7 @@ public class RobotAnimationController : MonoBehaviour
             shotgun = false;
             changeGun(0);
 
-            gameManager.GetComponent<GameManager>().SetWeapon("EmptySlot");
+            weaponManager.GetComponent<WeaponUI>().SetWeapon("EmptySlot");
         }
 
         timeToFire -= Time.deltaTime;

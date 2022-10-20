@@ -11,13 +11,19 @@ public class EnemyCombatController : MonoBehaviour
     public float currentHealth { get; private set; }
     public float resistance = 0;
 
+    private int scoreModifier;
+
     public Vector3 offset = new Vector3(0, 1, 0);
 
     public int ammoIndex;
 
+    private GameObject gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
+        scoreModifier = gameManager.GetComponent<GameManager>().scoreModifier;
         currentHealth = maxHealth;
     }
 
@@ -32,6 +38,7 @@ public class EnemyCombatController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            gameManager.GetComponent<GameManager>().score += scoreModifier;
             Die();
         }
     }

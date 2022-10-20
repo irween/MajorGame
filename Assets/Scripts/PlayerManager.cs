@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     #endregion
