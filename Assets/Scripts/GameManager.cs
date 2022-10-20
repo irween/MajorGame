@@ -63,8 +63,17 @@ public class GameManager : MonoBehaviour
         Debug.Log(currentHealth);
     }
 
+    public void IncreaseBaseHealth(float health)
+    {
+        healthBar = FindObjectOfType<HealthBar>();
+
+        basePlayerHealth += health;
+        healthBar.SetMaxHealth((int)health);
+    }
+
     public void AddToHealth(float health)
     {
+        healthBar = FindObjectOfType<HealthBar>();
         currentHealth += health;
         currentHealth = Mathf.Clamp(currentHealth, 0, basePlayerHealth);
         healthBar.SetHealth(currentHealth);

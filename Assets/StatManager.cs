@@ -38,7 +38,8 @@ public class StatManager : MonoBehaviour
         if (stat == 3)
         {
             // increase health
-            gameManager.GetComponent<GameManager>().basePlayerHealth += modifierPlayerHealth;
+            gameManager.GetComponent<GameManager>().IncreaseBaseHealth(modifierPlayerHealth);
+            gameManager.GetComponent<GameManager>().AddToHealth(modifierPlayerHealth);
         }
 
         if (gameManager.GetComponent<GameManager>().currentWave == gameManager.GetComponent<GameManager>().bossWave)

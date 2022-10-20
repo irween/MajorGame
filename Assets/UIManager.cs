@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverUI;
-    public GameObject weaponUI;
     public GameObject levelComplete;
 
     void Start()
@@ -16,12 +15,10 @@ public class UIManager : MonoBehaviour
     public void CompleteLevel()
     {
         levelComplete.SetActive(true);
-        weaponUI.SetActive(false);
     }
 
     public void KillPlayer()
     {
         gameOverUI.SetActive(true);
-        weaponUI.SetActive(false);
     }
 }
