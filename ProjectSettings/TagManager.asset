@@ -12,6 +12,7 @@ TagManager:
   - Pistol
   - MachineGun
   - Shotgun
+  - Score
   layers:
   - Default
   - TransparentFX

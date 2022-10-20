@@ -19,10 +19,13 @@ public class EnemyCombatController : MonoBehaviour
 
     private GameObject gameManager;
 
+    private GameObject scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        scoreText = GameObject.FindGameObjectWithTag("Score");
         scoreModifier = gameManager.GetComponent<GameManager>().scoreModifier;
         currentHealth = maxHealth;
     }
@@ -39,6 +42,7 @@ public class EnemyCombatController : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameManager.GetComponent<GameManager>().score += scoreModifier;
+            scoreText.GetComponent<ScoreManager>().UpdateScore();
             Die();
         }
     }
@@ -47,7 +51,6 @@ public class EnemyCombatController : MonoBehaviour
     {
         ammoIndex =  Random.Range(0, ammo.Length);
         Instantiate(ammo[ammoIndex], transform.position + offset, ammo[ammoIndex].transform.rotation);
-
         Destroy(gameObject);
         Debug.Log(transform.name + " died");
     }

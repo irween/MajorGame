@@ -227,6 +227,7 @@ MonoBehaviour:
   resistance: 0
   offset: {x: 0, y: 1, z: 0}
   ammoIndex: 0
+  scoreText: {fileID: 0}
 --- !u!1 &2181632783458337521
 GameObject:
   m_ObjectHideFlags: 0

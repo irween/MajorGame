@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        gameOverUI.SetActive(false);
         if (Instance != null)
         {
             Destroy(gameObject);
