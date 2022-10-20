@@ -10,11 +10,18 @@ public class MachinegunController : MonoBehaviour
 
     public int ammoAmount;
 
+    public GameObject ammoText;
+
     private GameManager gameManager;
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        ammoAmount = gameManager.GetComponent<AmmoManager>().machinegunAmmo;
+        ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+    }
 
     public void ShootGun()
     {
-        gameManager = FindObjectOfType<GameManager>();
         ammoAmount = gameManager.GetComponent<AmmoManager>().machinegunAmmo;
         ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
 

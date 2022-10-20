@@ -10,7 +10,7 @@ public class ShotgunController : MonoBehaviour
 
     public int shotgunAmount;
     public int angleStart;
-    private int angleModifier;
+    public int angleModifier;
     private int angle;
     private Quaternion shotgunAngle;
 
@@ -19,19 +19,23 @@ public class ShotgunController : MonoBehaviour
     private GameManager gameManager;
 
     public GameObject ammoText;
-
-    public void ShootGun()
+    private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         ammoAmount = gameManager.GetComponent<AmmoManager>().shotgunAmmo;
         ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+    }
+
+    public void ShootGun()
+    {
+        ammoAmount = gameManager.GetComponent<AmmoManager>().shotgunAmmo;
+        ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+        gameManager.GetComponent<AmmoManager>().shotgunAmmo--;
         if (ammoAmount > 0)
-        {
+        { 
             angle = angleStart;
-            angleModifier = -angleStart / 2;
             for (int i = 0; i < shotgunAmount; i++)
-            {
-                gameManager.GetComponent<AmmoManager>().shotgunAmmo--;
+            { 
                 angle += angleModifier;
                 shotgunAngle = transform.rotation * Quaternion.AngleAxis(angle, Vector3.forward);
                 Instantiate(projectilePrefab, transform.position + offset, shotgunAngle * Quaternion.Euler(0, 0, 90));

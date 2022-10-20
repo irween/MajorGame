@@ -31,10 +31,7 @@ public class Spawner : MonoBehaviour
         spawnQuantity = FindObjectOfType<GameManager>().spawnAmount;
 
         // the game starts by spawning an enemy
-        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
-                1, Random.Range(spawnRangeZ1, spawnRangeZ2));
-
-        Instantiate(Enemies[1], spawnPos, Enemies[enemyIndex].transform.rotation);
+        SpawnSniper();
         SpawnRandomEnemy();
     }
 
@@ -45,7 +42,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnRandomEnemy()
     {
-        for (int i = 0; i < spawnQuantity - 1; i++)
+        for (int i = 0; i < spawnQuantity; i++)
         {
             enemySniper = Random.Range(0, spawnChanceSniper);
 
@@ -61,5 +58,20 @@ public class Spawner : MonoBehaviour
                 Instantiate(Enemies[0], spawnPos, Enemies[enemyIndex].transform.rotation);
             }
         }
+    }
+    public void SpawnSniper()
+    {
+        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
+                1, Random.Range(spawnRangeZ1, spawnRangeZ2));
+
+        Instantiate(Enemies[1], spawnPos, Enemies[enemyIndex].transform.rotation);
+    }
+
+    public void SpawnEnemy()
+    {
+        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX1, spawnRangeX2),
+                1, Random.Range(spawnRangeZ1, spawnRangeZ2));
+
+        Instantiate(Enemies[0], spawnPos, Enemies[enemyIndex].transform.rotation);
     }
 }

@@ -219,15 +219,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa72e182261c346b98f0f69a72e40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo:
+  drops:
   - {fileID: 6148412531597834149, guid: b138a2d4f82694c43b57d0e4aeec7dc1, type: 3}
   - {fileID: 3016958338297708629, guid: 0a249b45ee277f1418f9f633e52718df, type: 3}
   - {fileID: 5062584540365080796, guid: 7c27ce45a46f7c64ca3cf7b487da5d9a, type: 3}
-  maxHealth: 20
+  - {fileID: 2957273954827131516, guid: 3f230b0f0f4530445bdb17fe51a61d8c, type: 3}
+  maxHealth: 250
   resistance: 0
+  damage: 20
   offset: {x: 0, y: 1, z: 0}
-  ammoIndex: 0
-  scoreText: {fileID: 0}
+  enemyDropIndex: 0
 --- !u!1 &2181632783458337521
 GameObject:
   m_ObjectHideFlags: 0

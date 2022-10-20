@@ -18,15 +18,15 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") | other.gameObject.CompareTag("Floor"))
         {
             Destroy(gameObject);
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
             other.gameObject.GetComponent<PlayerCombatController>().takeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626c2c578b64e2542990d2d47f9058bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgun: {fileID: 0}
-  ammo: 10
+  ammoAmount: 10
+  ammoText: {fileID: 0}
 --- !u!65 &47505754065697723
 BoxCollider:
   m_ObjectHideFlags: 0

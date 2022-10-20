@@ -5,14 +5,25 @@ using UnityEngine;
 public class PistolAmmo : MonoBehaviour
 {
     private GameManager gameManager;
-    public int ammo;
+    public int ammoAmount;
+    public AmmoUIManager ammoText;
+    private int currentGun;
+    private int currentAmmo;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             gameManager = FindObjectOfType<GameManager>();
-            gameManager.GetComponent<AmmoManager>().PistolAmmoUpdate(ammo);
+            ammoText = FindObjectOfType<AmmoUIManager>();
+            gameManager.GetComponent<AmmoManager>().PistolAmmoUpdate(ammoAmount);
+
+            currentGun = other.GetComponent<RobotAnimationController>().currentGun;
+            if (currentGun == 1)
+            {
+                currentAmmo = gameManager.GetComponent<AmmoManager>().machinegunAmmo;
+                ammoText.UpdateAmmo(currentAmmo);
+            }
             Destroy(gameObject);
         }
     }

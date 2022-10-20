@@ -5,7 +5,7 @@ public class LevelComplete : MonoBehaviour
 {
     private GameObject gameManager;
 
-    public int maxWave;
+    public int bossWave;
 
     void Start()
     {
@@ -13,9 +13,9 @@ public class LevelComplete : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-        if (gameManager.GetComponent<GameManager>().currentWave == maxWave)
+        if (gameManager.GetComponent<GameManager>().currentWave == bossWave)
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("BossLevel");
         }
     }
 }

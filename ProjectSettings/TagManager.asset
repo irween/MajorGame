@@ -14,6 +14,7 @@ TagManager:
   - Shotgun
   - Score
   - ScoreText
+  - Floor
   layers:
   - Default
   - TransparentFX

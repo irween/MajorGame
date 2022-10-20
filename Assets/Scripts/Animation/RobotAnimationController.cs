@@ -7,7 +7,10 @@ public class RobotAnimationController : MonoBehaviour
     private Animator animator;
 
     public int currentGun;
-    public GameObject[] guns;
+    public List<GameObject> guns;
+
+    public GameObject ammoText;
+    private int ammoAmount;
 
     private float lookHorizontalInput;
     private float lookVerticalInput;
@@ -17,7 +20,6 @@ public class RobotAnimationController : MonoBehaviour
     public float timeToFireShotgun;
 
     private float timeToFireInterval;
-
     private float timeToFire;
 
     public bool isShooting = false;
@@ -26,16 +28,21 @@ public class RobotAnimationController : MonoBehaviour
     public bool shotgun = false;
 
     private GameObject weaponManager;
+
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         weaponManager = GameObject.Find("WeaponsUI");
 
         animator = GetComponent<Animator>();
 
         weaponManager.GetComponent<WeaponUI>().SetWeapon("EmptySlot");
 
-        for (int i = 0; i < guns.Length; i++)
+        for (int i = 0; i < guns.Count; i++)
         {
             guns[i].SetActive(false);
         }
@@ -121,11 +128,29 @@ public class RobotAnimationController : MonoBehaviour
     public void changeGun(int gun)
     {
         currentGun = gun;
-        for (int i = 0; i < guns.Length; i++)
+        for (int i = 0; i < guns.Count; i++)
         {
             if (i == gun)
             {
                 guns[i].SetActive(true);
+
+                if (i == 1)
+                {
+                    ammoAmount = gameManager.GetComponent<AmmoManager>().pistolAmmo;
+                    ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+                }
+
+                if (i == 2)
+                {
+                    ammoAmount = gameManager.GetComponent<AmmoManager>().machinegunAmmo;
+                    ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+                }
+
+                if (i == 3)
+                {
+                    ammoAmount = gameManager.GetComponent<AmmoManager>().shotgunAmmo;
+                    ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
+                }
             }
             else
             {
