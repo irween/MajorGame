@@ -16,7 +16,7 @@ public class PistolController : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         ammoAmount = gameManager.GetComponent<AmmoManager>().pistolAmmo;
-
+        ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
         if (ammoAmount > 0)
         {
             gameManager.GetComponent<AmmoManager>().pistolAmmo--;

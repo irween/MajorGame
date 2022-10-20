@@ -21,9 +21,9 @@ public class RobotAnimationController : MonoBehaviour
     private float timeToFire;
 
     public bool isShooting = false;
-    private bool pistol = false;
-    private bool machineGun = false;
-    private bool shotgun = false;
+    public bool pistol = false;
+    public bool machineGun = false;
+    public bool shotgun = false;
 
     private GameObject weaponManager;
     // Start is called before the first frame update

@@ -13,6 +13,7 @@ TagManager:
   - MachineGun
   - Shotgun
   - Score
+  - ScoreText
   layers:
   - Default
   - TransparentFX

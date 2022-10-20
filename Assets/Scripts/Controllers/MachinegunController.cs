@@ -16,6 +16,7 @@ public class MachinegunController : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         ammoAmount = gameManager.GetComponent<AmmoManager>().machinegunAmmo;
+        ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
 
         if (ammoAmount > 0)
         {

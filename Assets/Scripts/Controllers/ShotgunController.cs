@@ -18,11 +18,13 @@ public class ShotgunController : MonoBehaviour
 
     private GameManager gameManager;
 
+    public GameObject ammoText;
+
     public void ShootGun()
     {
         gameManager = FindObjectOfType<GameManager>();
         ammoAmount = gameManager.GetComponent<AmmoManager>().shotgunAmmo;
-
+        ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
         if (ammoAmount > 0)
         {
             angle = angleStart;
