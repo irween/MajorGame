@@ -16,4 +16,9 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+
+    private void Update()
+    {
+        player = GameObject.Find("player");
+    }
 }

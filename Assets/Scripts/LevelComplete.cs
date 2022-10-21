@@ -3,17 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
-    private GameObject gameManager;
+    private GameManager gameManager;
 
     public int bossWave;
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        gameManager = FindObjectOfType<GameManager>();
     }
     public void LoadNextLevel()
     {
-        if (gameManager.GetComponent<GameManager>().currentWave == bossWave)
+        if (gameManager.currentWave == bossWave)
         {
             SceneManager.LoadScene("BossLevel");
         }

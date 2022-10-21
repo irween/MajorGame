@@ -12,11 +12,11 @@ public class PistolController : MonoBehaviour
     
     public GameObject ammoText;
 
-    private GameManager gameManager;
+    private GameObject gameManager;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameObject.Find("GameManager");
         ammoAmount = gameManager.GetComponent<AmmoManager>().pistolAmmo;
         ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
     }

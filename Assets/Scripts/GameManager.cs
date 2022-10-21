@@ -29,21 +29,12 @@ public class GameManager : MonoBehaviour
     public int bossWave;
     public int currentWave;
 
-    private PlayerCombatController playerCombatController;
-
     private void Awake()
     {
         if (Instance != null)
         {
             Destroy(gameObject);
             return;
-        }
-
-        if (difficulty == 0)
-        {
-            basePlayerHealth *= 1.5f;
-            basePlayerDamage *= 1.5f;
-            basePlayerResistance *= 1.5f;
         }
 
         Instance = this;
@@ -79,12 +70,21 @@ public class GameManager : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    public void StartGame()
+    {
+        if (difficulty == 0)
+        {
+            basePlayerHealth *= 1.5f;
+            basePlayerDamage *= 1.5f;
+            basePlayerResistance *= 1.5f;
+
+            baseSpawnAmount -= 5;
+            scoreModifier /= 2;
+        }
+    }
+
     public void CompleteLevel()
     {
-        uiManager = FindObjectOfType<UIManager>();
-        uiManager.CompleteLevel();
-
-        currentWave += 1;
         if (currentWave == bossWave)
         {
             spawnAmount = baseSpawnAmount;
@@ -93,6 +93,9 @@ public class GameManager : MonoBehaviour
         {
             spawnAmount += levelSpawnAmountChange;
         }
+
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.CompleteLevel();
     }
 
     public void KillPlayer()

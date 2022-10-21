@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StatManager : MonoBehaviour
 {
-    private GameObject gameManager;
+    private GameManager gameManager;
 
     public float modifierPlayerResistance;
     public float modifierPlayerHealth;
@@ -16,7 +16,7 @@ public class StatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void IncreaseStat(int stat)
@@ -26,28 +26,29 @@ public class StatManager : MonoBehaviour
         if (stat == 1)
         {
             // increase resistance
-            gameManager.GetComponent<GameManager>().basePlayerResistance += modifierPlayerResistance;
+            gameManager.basePlayerResistance += modifierPlayerResistance;
         }
 
         if (stat == 2)
         {
             // increase damage
-            gameManager.GetComponent<GameManager>().basePlayerDamage *= modifierPlayerDamage;
+            gameManager.basePlayerDamage *= modifierPlayerDamage;
         }
 
         if (stat == 3)
         {
             // increase health
-            gameManager.GetComponent<GameManager>().IncreaseBaseHealth(modifierPlayerHealth);
-            gameManager.GetComponent<GameManager>().AddToHealth(modifierPlayerHealth);
+            gameManager.IncreaseBaseHealth(modifierPlayerHealth);
+            gameManager.AddToHealth(modifierPlayerHealth);
         }
 
-        if (gameManager.GetComponent<GameManager>().currentWave == gameManager.GetComponent<GameManager>().bossWave)
+        if (gameManager.currentWave == gameManager.GetComponent<GameManager>().bossWave)
         {
             SceneManager.LoadScene("BossLevel");
         }
         else
         {
+            gameManager.currentWave++;
             currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
         }
