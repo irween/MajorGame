@@ -4,40 +4,47 @@ using UnityEngine;
 
 public class EnemyGun : MonoBehaviour
 {
+    // set player transform
     Transform playerTransform;
 
-    public float lookAttackRadius = 25f;
+    // set attack radius
+    public float lookAttackRadius;
 
+    // set projectile prefab
     public GameObject projectilePrefab;
 
-    public Vector3 offset = new Vector3(0, 0, 0);
-
+    // interval between each shot
     public float timeToFireInterval;
-
     private float timeToFire;
 
     void Start()
     {
+        // set player transform to player from playermanager
         playerTransform = PlayerManager.instance.player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // find the distance between current object and player
         float distance = Vector3.Distance(playerTransform.position, transform.position);
 
-        timeToFire = timeToFire -= Time.deltaTime;
+        // takes one away from time to fire every second
+        timeToFire -= Time.deltaTime;
 
+        // checks if distance to player is less than the attack radius and time to fire is less than or equal to 0
         if (distance <= lookAttackRadius && timeToFire <= 0)
         {
-            Instantiate(projectilePrefab, transform.position + offset, transform.rotation);
-            timeToFire = timeToFireInterval;
+            // spawn projectile
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
+            timeToFire = timeToFireInterval; // resets time to fire
         }
     }
 
+    // draws gizmos in editor
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, lookAttackRadius);
+        Gizmos.color = Color.blue; // sets gizmo colour
+        Gizmos.DrawWireSphere(transform.position, lookAttackRadius); // draws sphere at object position with size of attack radius
     }
 }

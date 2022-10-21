@@ -5,20 +5,17 @@ using TMPro;
 
 public class AmmoUIManager : MonoBehaviour
 {
-    private GameObject gameManager;
-    private GameObject player;
-
+    // sets amo text
     public TextMeshProUGUI ammoText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager");
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
+    /// <summary>
+    /// updates the amount of ammo the ammo text displays
+    /// ammo refers to how much ammo the player currently has
+    /// </summary>
+    /// <param name="ammo"></param>
     public void UpdateAmmo(int ammo)
     {
+        // changes the ammo text to the current ammo
         ammoText.text = ammo.ToString();
     }
 }

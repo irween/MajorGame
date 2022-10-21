@@ -6,91 +6,96 @@ using UnityEngine;
 
 public class EnemyCombatController : MonoBehaviour
 {
+    // sets the drops the enemy can drop
     public GameObject[] drops;
 
-    public float maxHealth = 100;
-    public float currentHealth { get; private set; }
-    public float resistance = 0;
-    public float damage;
+    // stats
+    public float maxHealth; // max health
+    public float currentHealth { get; private set; } // keeps current health private but displays in inspector
+    public float resistance; // amount of resistance the enemy has
+    public float damage; // amonut of damage the enemy does
 
-    private bool dead = false;
-
-    private int scoreModifier;
-
+    // Vector3 that offsets the drops from the ground
     public Vector3 offset = new Vector3(0, 1, 0);
 
-    public int enemyDropIndex;
+    private int enemyDropIndex; // the integer that corresponds with the drop
+    private int scoreModifier; // amount to increase score by
 
-    private bool canAttack;
+    private GameManager gameManager; // sets gamemanager
+    private GameObject scoreText; // sets the score text game object
 
-    private GameObject gameManager;
+    private Spawner spawner; // sets the spawner object
+    private PlayerCombatController playerCombatController; // sets the player combat controller
 
-    private GameObject scoreText;
-
-    private Spawner spawner;
-
-    private PlayerCombatController playerCombatController;
-
+    private bool dead = false; // whether the enemy is dead or not
+    private bool canAttack; // whether the enemy can attack or not
+    
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        // find objects
+        gameManager = FindObjectOfType<GameManager>();
         scoreText = GameObject.FindGameObjectWithTag("Score");
         playerCombatController = FindObjectOfType<PlayerCombatController>();
 
-        scoreModifier = gameManager.GetComponent<GameManager>().scoreModifier;
-        currentHealth = maxHealth;
-        enemyDropIndex = Random.Range(0, drops.Length);
+        scoreModifier = gameManager.scoreModifier; // sets the score modifier
+        currentHealth = maxHealth; // sets the current health to the max health
+        enemyDropIndex = Random.Range(0, drops.Length); // gets a random value that corresponds to a drop
     }
 
+    // called by other scripts
+    // makes the enemy take damage by "damage" amount
     public void takeDamage(float damage)
     {
+        // takes the enemies resistance away from the damage and clamps it to stay above 0
         damage -= resistance;
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
+        // takes away damage from current health
         currentHealth -= damage;
+
+        // checks if the health is below or equal to 0 (dead)
         if (currentHealth <= 0)
         {
-            gameManager.GetComponent<GameManager>().score += scoreModifier;
-            scoreText.GetComponent<ScoreManager>().UpdateScore();
+            gameManager.score += scoreModifier; // adds to score
+            scoreText.GetComponent<ScoreManager>().UpdateScore(); // updates score
+
+            // checks if the enemy is dead already (prevents running Die() multiple times)
             if (!dead)
             {
                 Die();
             }
         }
     }
+
+    // called when dead
     private void Die()
     {
-        dead = true;
-        Instantiate(drops[enemyDropIndex], transform.position + offset, drops[enemyDropIndex].transform.rotation);
-        Destroy(gameObject);
+        dead = true; // sets dead to true (prevents death from running multiple times)
+
+        // spawn the random enemy drop
+        Instantiate(drops[enemyDropIndex], transform.position + offset, drops[enemyDropIndex].transform.rotation); 
+        Destroy(gameObject); // destroys enemy
     }
 
+    // called by animation
+    // attack player
     public void Attack()
     {
+        // checks that the player has collided with the enemy
         if (canAttack)
         {
+            // damages player
             playerCombatController.takeDamage(damage);
         }
     }
 
+    // when an object triggers the collider enter
+    // collider is the current game object (enemy)
+    // other is the object that triggered the collider
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            spawner = FindObjectOfType<Spawner>();
-
-            if (transform.name == "SniperTower")
-            {
-                spawner.SpawnSniper();
-            }
-            else
-            {
-                spawner.SpawnEnemy();
-            }
-            Destroy(gameObject);
-        }
-
+        // checks if the player has collided
         if (other.gameObject.CompareTag("Player"))
         {
             canAttack = true;

@@ -7,42 +7,54 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    // stats
     public float currentHealth;
     public float resistance;
     public float playerDamage;
+    
+    public HealthBar healthBar; // healthbar ui
     private float maxHealth;
 
-    public HealthBar healthBar;
-
+    // sets gamemanager
     private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        // find objects
         gameManager = FindObjectOfType<GameManager>();
-        playerDamage = gameManager.GetComponent<GameManager>().basePlayerDamage;
-        resistance = gameManager.GetComponent<GameManager>().basePlayerResistance;
         healthBar = FindObjectOfType<HealthBar>();
+
+        // setting player stats
+        playerDamage = gameManager.basePlayerDamage;
+        resistance = gameManager.basePlayerResistance / 100;
+        currentHealth = gameManager.basePlayerHealth;
+
+        // sets max health to the base player health from gamemanager
         maxHealth = gameManager.basePlayerHealth;
     }
 
+    // called whenever another script calls this
+    // damage takes damage away from the current health
     public void takeDamage(float damage)
     {
-        damage *= 1 + (resistance/100);
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
-        damage = Mathf.RoundToInt(damage);
-        gameManager.AddToHealth(-damage);
-        currentHealth = gameManager.currentHealth;
+        damage *= 1 + resistance; // multiplies damage by a percentage to negate some damage
+        damage = Mathf.RoundToInt(damage); // rounds the damage taken to a whole number
+        gameManager.AddToHealth(-damage); // removes damage from health in gamemanager
+        currentHealth = gameManager.currentHealth; // sets currenthealth to gamemanager currenthealth
 
+        // checks the if player health is less than or equal to 0
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
+    // ends game
     private void Die()
     {
+        // finds gamemanager
         gameManager = FindObjectOfType<GameManager>();
-        gameManager.KillPlayer();
+        gameManager.KillPlayer(); // calls kill player function
     }
 }

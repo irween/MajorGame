@@ -3,34 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PistolController : MonoBehaviour
-{
+{ 
+    // sets the projectile prefab
     public GameObject projectilePrefab;
 
-    public Vector3 offset = new Vector3(0, 0, 0);
-
+    // sets the ammo amount
     public int ammoAmount; 
     
+    // sets the ammo text ui
     public GameObject ammoText;
 
-    private GameObject gameManager;
+    // sets the gamemanager
+    private GameManager gameManager;
 
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        // finds the gamemanager
+        gameManager = FindObjectOfType<GameManager>();
+
+        // setting the ammo amount and ammo text to the current ammo the player has (from gamemanager)
         ammoAmount = gameManager.GetComponent<AmmoManager>().pistolAmmo;
         ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
     }
 
+    // called whenever the player shoots the gun
+    // spawns the projectile with correct rotation
+    // changes the ammo amounts
     public void ShootGun()
     {
+        // setting the ammo amount and ammo text to the current ammo the player has (from gamemanager)
         ammoAmount = gameManager.GetComponent<AmmoManager>().pistolAmmo;
         ammoText.GetComponent<AmmoUIManager>().UpdateAmmo(ammoAmount);
 
+        // checking if there is enough ammo to shoot
         if (ammoAmount > 0)
         {
+            // taking one ammo away from pistol ammo
             gameManager.GetComponent<AmmoManager>().pistolAmmo--;
 
-            Instantiate(projectilePrefab, transform.position + offset, transform.rotation);
+            // spawning the projectile
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
         }
     }
 }

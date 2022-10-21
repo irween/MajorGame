@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class EnemyControllerSniper : MonoBehaviour
 {
+    // sets the look radius
     public float lookRadius;
 
+    // creates the target transform
     Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
+        // sets the target to the player through the player manager
         target = PlayerManager.instance.player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-        FaceTarget();
+        // looks at the player
+        Vector3 direction = (target.position - transform.position).normalized; // gets the direction to the player
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // sets the direction to the player as an angle
+        transform.rotation = lookRotation; // rotates the enemy to look at the player
     }
 
-    void FaceTarget()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = lookRotation;
-    }
-
+    // draw gizmos in the editor
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.color = Color.red; // sets the colour to red
+        Gizmos.DrawWireSphere(transform.position, lookRadius); // draws a sphere at the enemy with a radius of look radius
     }
 }
 
