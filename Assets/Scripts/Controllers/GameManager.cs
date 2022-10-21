@@ -120,7 +120,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         bossLevel = false; // sets boss level to false
-        currentWave = 0; // sets the current wave to 0
 
         // sets the base player stats to their default values
         basePlayerResistance = startPlayerResistance;
@@ -155,7 +154,10 @@ public class GameManager : MonoBehaviour
         {
             // changes spawn amount to the default amount + the level spawn amount modifier
             spawnAmount = baseSpawnAmount;
-
+        }
+        // checks if the current wave is equal to the wave after the boss wave
+        else if (currentWave == bossWave + 1)
+        {
             // changes boss level to true
             bossLevel = true;
         }

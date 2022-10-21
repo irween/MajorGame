@@ -54,6 +54,7 @@ public class StatManager : MonoBehaviour
         {
             // load boss scene
             SceneManager.LoadScene("BossLevel");
+            gameManager.currentWave++;
         }
         else
         {
